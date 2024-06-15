@@ -9,6 +9,15 @@ class book_manager():
         self.books.append({"title": title, "author": author, "isbn": isbn})
         self.storage_management.update_books_store(self.books)
 
+    def delete_book(self, isbn):
+        old_length = len(self.books)
+        self.books = [book for book in self.books if book["isbn"] != isbn]
+        if len(self.books) == old_length:
+            return False
+        else:
+            self.storage_management.update_books_store(self.books)
+            return True
+        
     def list_books(self):
         for book in self.books:
             print(book)

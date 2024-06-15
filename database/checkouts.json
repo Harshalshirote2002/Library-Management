@@ -1,0 +1,13 @@
+{
+    "checkouts": [
+        {
+            "user_ID": "user_123",
+            "isbn": "ISBN_12345"
+        },
+        {
+            "user_id": "user_124",
+            "isbn": "ISBN_1236"
+        }
+    ],
+    "last_updated": "21:19:34 15-06-2024"
+}
