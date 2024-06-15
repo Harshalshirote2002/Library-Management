@@ -1,0 +1,20 @@
+{
+    "books": [
+        {
+            "title": "And then there were none",
+            "author": "Agatha Christie",
+            "isbn": "ISBN_12345"
+        },
+        {
+            "title": "Angles and Demons",
+            "author": "Dan Brown",
+            "isbn": "ISBN_12346"
+        },
+        {
+            "title": "Da Vinci Code",
+            "author": "Dan Brown",
+            "isbn": "ISBN_12347"
+        }
+    ],
+    "last_updated": "20:10:51 15-06-2024"
+}
