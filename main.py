@@ -13,8 +13,10 @@ def main_menu():
     print("4. Add User")
     print("5. Delete User")
     print("6. List Users")
-    print("7. Checkout Book")
-    print("8. Exit")
+    print("7. List Available Books")
+    print("8. CheckIn Book")
+    print("9. CheckOut Book")
+    print("10. Exit")
     choice = input("Enter choice: ")
     return choice
 
@@ -54,11 +56,17 @@ def main():
         elif choice == '6':
             user_management.list_users()
         elif choice == '7':
+            book_management.list_available_books()
+        elif choice == '8':
+            user_ID = input("Enter User ID: ")
+            isbn = input("Enter ISBN: ")
+            checkout_management.checkIn_book(user_ID, isbn)
+        elif choice == '9':
             user_id = input("Enter user ID: ")
             isbn = input("Enter ISBN of the book to checkout: ")
             checkout_management.checkout_book(user_id, isbn)
             print("Book checked out.")
-        elif choice == '8':
+        elif choice == '10':
             print("Exiting...")
             time.sleep(3)
             print("Thank You Visit Again!")
