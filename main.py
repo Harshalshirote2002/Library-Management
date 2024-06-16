@@ -14,9 +14,11 @@ def main_menu():
     print("5. Delete User")
     print("6. List Users")
     print("7. List Available Books")
-    print("8. CheckIn Book")
-    print("9. CheckOut Book")
-    print("10. Exit")
+    print("8. Search Book")
+    print("9. Search User")
+    print("10. CheckIn Book")
+    print("11. CheckOut Book")
+    print("12. Exit")
     choice = input("Enter choice: ")
     return choice
 
@@ -58,17 +60,34 @@ def main():
         elif choice == '7':
             book_management.list_available_books()
         elif choice == '8':
+            title = input("Enter title: ")
+            author = input("Enter author: ")
+            isbn = input("Enter ISBN: ")
+            res = book_management.search_book(title, author, isbn)
+            if not res:
+                print("No match Found")
+        elif choice == '9':
+            name = input("Enter user name: ")
+            user_id = input("Enter user ID: ")
+            res = user_management.search_user(name, user_id)
+            if not res:
+                print("No match Found")
+        elif choice == '10':
             user_ID = input("Enter User ID: ")
             isbn = input("Enter ISBN: ")
-            checkout_management.checkIn_book(user_ID, isbn)
-        elif choice == '9':
+            res = checkout_management.checkIn_book(user_ID, isbn)
+            if res:
+                print("Book checked In")
+            else:
+                print("Provided details are invalid!")
+        elif choice == '11':
             user_id = input("Enter user ID: ")
             isbn = input("Enter ISBN of the book to checkout: ")
             checkout_management.checkout_book(user_id, isbn)
             print("Book checked out.")
-        elif choice == '10':
+        elif choice == '12':
             print("Exiting...")
-            time.sleep(3)
+            # time.sleep(3)
             print("Thank You Visit Again!")
             break
         else:

@@ -20,6 +20,17 @@ class book_manager():
             self.storage_management.update_books_store(self.books)
             return True
         
+    def search_book(self, title, author, isbn):
+        book_found = False
+        for book in self.books:
+            if book["title"].lower() == title.lower() or book["author"].lower() == author.lower() or book["isbn"] == isbn:
+                book_found = True
+                print(book)
+        if book_found:
+            return True
+        else:
+            return False
+        
     def list_books(self):
         for book in self.books:
             print(book)

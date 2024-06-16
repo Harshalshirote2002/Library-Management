@@ -17,6 +17,17 @@ class user_manager():
         else:
             self.storage_management.update_users_store(self.users)
             return True
+        
+    def search_user(self, name, user_id):
+        user_found = False
+        for user in self.users:
+            if user["name"].lower() == name.lower() or user["user_ID"]== user_id:
+                user_found = True
+                print(user)
+        if user_found:
+            return True
+        else:
+            return False
     
     def list_users(self):
         for user in self.users:
