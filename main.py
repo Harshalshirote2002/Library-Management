@@ -33,7 +33,6 @@ def main():
             author = input("Enter author: ")
             isbn = input("Enter ISBN: ")
             book_management.add_book(title, author, isbn)
-            print("Book added.")
         elif choice == '2':
             isbn = input("Enter ISBN: ")
             rem = book_management.delete_book(isbn)
@@ -47,7 +46,6 @@ def main():
             name = input("Enter user name: ")
             user_id = input("Enter user ID: ")
             user_management.add_user(name, user_id)
-            print("User added.")
         elif choice == '5':
             user_ID = input("Enter user ID: ")
             rem = user_management.delete_user(user_ID)
@@ -58,7 +56,7 @@ def main():
         elif choice == '6':
             user_management.list_users()
         elif choice == '7':
-            book_management.list_available_books()
+            book_management.list_available_books(checkout_management)
         elif choice == '8':
             title = input("Enter title: ")
             author = input("Enter author: ")
@@ -83,8 +81,7 @@ def main():
         elif choice == '11':
             user_id = input("Enter user ID: ")
             isbn = input("Enter ISBN of the book to checkout: ")
-            checkout_management.checkout_book(user_id, isbn)
-            print("Book checked out.")
+            checkout_management.checkout_book(user_id, isbn, user_management, book_management)
         elif choice == '12':
             print("Exiting...")
             # time.sleep(3)
