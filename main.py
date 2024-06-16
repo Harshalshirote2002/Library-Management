@@ -1,9 +1,18 @@
-# This is a deliberately poorly implemented main script for a Library Management System.
-
+#!/usr/bin/env python3
+"""
+ * @file main.py
+ * @author Harshal Shirote (harshalshirote2002@gmail.com)
+ * @brief The main menu function to interface an user with the Library Management System
+ * @version 1.0.0
+ * @date 2024-06-16
+ *
+ * @copyright Copyright (c) 2024
+"""
 from book import book_manager
 from user import user_manager
 from check import check_manager
 import time
+
 
 def main_menu():
     print("\nLibrary Management System")
@@ -22,55 +31,56 @@ def main_menu():
     choice = input("Enter choice: ")
     return choice
 
+
 def main():
     book_management = book_manager()
     user_management = user_manager()
     checkout_management = check_manager()
     while True:
         choice = main_menu()
-        if choice == '1':
+        if choice == "1":
             title = input("Enter title: ")
             author = input("Enter author: ")
             isbn = input("Enter ISBN: ")
             book_management.add_book(title, author, isbn)
-        elif choice == '2':
+        elif choice == "2":
             isbn = input("Enter ISBN: ")
             rem = book_management.delete_book(isbn)
             if rem:
                 print("Book deleted.")
             else:
                 print(f"Book with ISBN {isbn} not found!")
-        elif choice == '3':
+        elif choice == "3":
             book_management.list_books()
-        elif choice == '4':
+        elif choice == "4":
             name = input("Enter user name: ")
             user_id = input("Enter user ID: ")
             user_management.add_user(name, user_id)
-        elif choice == '5':
+        elif choice == "5":
             user_ID = input("Enter user ID: ")
             rem = user_management.delete_user(user_ID)
             if rem:
                 print("User deleted.")
             else:
                 print(f"User with ID {user_ID} not found!")
-        elif choice == '6':
+        elif choice == "6":
             user_management.list_users()
-        elif choice == '7':
+        elif choice == "7":
             book_management.list_available_books(checkout_management)
-        elif choice == '8':
+        elif choice == "8":
             title = input("Enter title: ")
             author = input("Enter author: ")
             isbn = input("Enter ISBN: ")
             res = book_management.search_book(title, author, isbn)
             if not res:
                 print("No match Found")
-        elif choice == '9':
+        elif choice == "9":
             name = input("Enter user name: ")
             user_id = input("Enter user ID: ")
             res = user_management.search_user(name, user_id)
             if not res:
                 print("No match Found")
-        elif choice == '10':
+        elif choice == "10":
             user_ID = input("Enter User ID: ")
             isbn = input("Enter ISBN: ")
             res = checkout_management.checkIn_book(user_ID, isbn)
@@ -78,17 +88,20 @@ def main():
                 print("Book checked In")
             else:
                 print("Provided details are invalid!")
-        elif choice == '11':
+        elif choice == "11":
             user_id = input("Enter user ID: ")
             isbn = input("Enter ISBN of the book to checkout: ")
-            checkout_management.checkout_book(user_id, isbn, user_management, book_management)
-        elif choice == '12':
+            checkout_management.checkout_book(
+                user_id, isbn, user_management, book_management
+            )
+        elif choice == "12":
             print("Exiting...")
-            # time.sleep(3)
+            time.sleep(3)
             print("Thank You Visit Again!")
             break
         else:
             print("Invalid choice, please try again.")
+
 
 if __name__ == "__main__":
     main()

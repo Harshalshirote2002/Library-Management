@@ -1,11 +1,34 @@
+#!/usr/bin/env python3
+"""
+ * @file check.py
+ * @author Harshal Shirote (harshalshirote2002@gmail.com)
+ * @brief The check_manager class to Manage checkIns and checkOuts
+ * @version 1.0.0
+ * @date 2024-06-16
+ *
+ * @copyright Copyright (c) 2024
+"""
 from storage import storage_manager
 
-class check_manager():
+
+class check_manager:
     def __init__(self) -> None:
         self.storage_management = storage_manager()
         self.checkouts = self.storage_management.get_checkouts_from_store()
 
     def checkout_book(self, user_id, isbn, user_management, book_management):
+        """
+        Adds checkout to checkouts.json database
+
+        Args:
+            user_id (str): The user's unique ID
+            isbn (str): The book's ISBN number
+            user_management (obj): The user management object
+            book_management (obj): The book management object
+
+        Returns:
+            None
+        """
         users = user_management.get_users()
         books = book_management.get_books()
         user_exists = False
@@ -34,7 +57,21 @@ class check_manager():
             print("\nBook already Checked Out")
 
     def checkIn_book(self, user_id, isbn):
-        new_checkouts = [checkout for checkout in self.checkouts if (checkout["user_ID"] != user_id or checkout["isbn"] != isbn)]
+        """
+        Removes checkout from checkouts.json database
+
+        Args:
+            user_id (str): The user's unique ID
+            isbn (str): The book's ISBN number
+
+        Returns:
+            Boolean
+        """
+        new_checkouts = [
+            checkout
+            for checkout in self.checkouts
+            if (checkout["user_ID"] != user_id or checkout["isbn"] != isbn)
+        ]
         if len(new_checkouts) == len(self.checkouts):
             return False
         else:
@@ -43,4 +80,13 @@ class check_manager():
             return True
 
     def get_checkedOut_books(self):
+        """
+        returns checkouts
+
+        Args:
+            None
+
+        Returns:
+            list
+        """
         return self.checkouts
