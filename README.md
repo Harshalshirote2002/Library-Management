@@ -12,3 +12,6 @@
 9. Search User
 10. CheckIn Book
 11. CheckOut Book
+
+##### To run:
+`python main.py`
